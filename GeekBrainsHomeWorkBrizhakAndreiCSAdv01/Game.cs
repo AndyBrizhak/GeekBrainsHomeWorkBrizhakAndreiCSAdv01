@@ -82,10 +82,12 @@ namespace MyGame
             //       for (int i = 0; i < _objs.Length; i++)
             //   _objs[i] = new BaseObject(new Point(600, i * 20), new Point(15 - i, 15 - i), new Size(20, 20));
             //   _objs[i] = new Star(new Point(600, i * 20), new Point(-i, 0), new Size(20, 20));
-            for (int i = 0; i < _objs.Length / 2; i++)
+            for (int i = 0; i < _objs.Length / 3; i++)
                 _objs[i] = new BaseObject(new Point(600, i * 20), new Point(-i, -i), new Size(10, 10));
-            for (int i = _objs.Length / 2; i < _objs.Length; i++)
-                _objs[i] = new Star(new Point(600, i * 20), new Point(-i, 0), new Size(5, 5));
+            for (int i = _objs.Length / 3; i < _objs.Length/3*2; i++)
+                _objs[i] = new Star(new Point(600, i * 20), new Point(-i, 0), new Size(10, 10));
+            for (int i = _objs.Length /3*2; i < _objs.Length; i++)
+                _objs[i] = new SmallRedStar(new Point(600, i * 20), new Point(-i, 0), new Size(5, 5));
         }
 
         /// <summary>
