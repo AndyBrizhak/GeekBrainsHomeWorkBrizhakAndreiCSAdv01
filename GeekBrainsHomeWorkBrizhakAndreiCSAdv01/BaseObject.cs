@@ -14,11 +14,18 @@ namespace MyGame
             Dir = dir;
             Size = size;
         }
-        public void Draw()
+        /// <summary>
+        /// рисует  обьекты
+        /// </summary>
+        public virtual void Draw()
         {
             Game.Buffer.Graphics.DrawEllipse(Pens.White, Pos.X, Pos.Y, Size.Width, Size.Height);
         }
-        public void Update()
+
+        /// <summary>
+        /// расчитывает новое местоположение обьектов
+        /// </summary>
+        public virtual void Update()
         {
             Pos.X = Pos.X + Dir.X;
             Pos.Y = Pos.Y + Dir.Y;
