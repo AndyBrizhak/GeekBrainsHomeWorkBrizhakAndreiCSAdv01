@@ -36,6 +36,9 @@ namespace MyGame
             Buffer = _context.Allocate(g, new Rectangle(0, 0, Width, Height));
         }
 
+        /// <summary>
+        /// вывод графики
+        /// </summary>
         public static void Draw()
         {
             // Проверяем вывод графики
@@ -46,4 +49,4 @@ namespace MyGame
         }
     }
 }
-}
+
