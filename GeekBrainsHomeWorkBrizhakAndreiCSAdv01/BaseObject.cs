@@ -8,6 +8,8 @@ namespace MyGame
         protected Point Pos;
         protected Point Dir;
         protected Size Size;
+        Image Planet = Image.FromFile("Planet.jpg");
+
         public BaseObject(Point pos, Point dir, Size size)
         {
             Pos = pos;
@@ -19,7 +21,8 @@ namespace MyGame
         /// </summary>
         public virtual void Draw()
         {
-            Game.Buffer.Graphics.DrawEllipse(Pens.White, Pos.X, Pos.Y, Size.Width, Size.Height);
+            //Game.Buffer.Graphics.DrawEllipse(Pens.White, Pos.X, Pos.Y, Size.Width, Size.Height);
+            Game.Buffer.Graphics.DrawImage(Planet, Pos.X, Pos.Y);
         }
 
         /// <summary>
