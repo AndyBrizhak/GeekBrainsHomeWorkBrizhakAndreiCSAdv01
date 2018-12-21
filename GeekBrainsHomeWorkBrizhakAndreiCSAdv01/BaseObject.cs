@@ -8,7 +8,7 @@ namespace MyGame
         protected Point Pos;
         protected Point Dir;
         protected Size Size;
-        Image Planet = Image.FromFile("Planet.jpg");
+        Image Planet = Image.FromFile("Planet.jpg");//
 
         public BaseObject(Point pos, Point dir, Size size)
         {
