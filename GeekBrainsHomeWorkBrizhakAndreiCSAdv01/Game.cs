@@ -17,6 +17,12 @@ namespace MyGame
         public static int Width { get; set; }
         public static int Height { get; set; }
 
+        /// <summary>
+        /// массив объектов BaseObject
+        /// </summary>
+        public static BaseObject[] _objs;
+
+
         static Game()
         {
         }
@@ -34,6 +40,21 @@ namespace MyGame
             // Связываем буфер в памяти с графическим объектом.
             // для того, чтобы рисовать в буфере
             Buffer = _context.Allocate(g, new Rectangle(0, 0, Width, Height));
+            Load();
+            Timer timer = new Timer { Interval = 100 };
+            timer.Start();
+            timer.Tick += Timer_Tick;
+        }
+
+        /// <summary>
+        /// Обработчик таймера в котором вызываются Draw () и Update();
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void Timer_Tick(object sender, EventArgs e)
+        {
+            Draw();
+            Update();
         }
 
         /// <summary>
@@ -46,7 +67,32 @@ namespace MyGame
             Buffer.Graphics.DrawRectangle(Pens.White, new Rectangle(100, 100, 200, 200));
             Buffer.Graphics.FillEllipse(Brushes.Wheat, new Rectangle(100, 100, 200, 200));
             Buffer.Render();
+            Buffer.Graphics.Clear(Color.Black);
+            foreach (BaseObject obj in _objs)
+                obj.Draw();
+            Buffer.Render();
         }
+
+        /// <summary>
+        /// инициализация  объектов
+        /// </summary>
+        public static void Load()
+        {
+            _objs = new BaseObject[30];
+            for (int i = 0; i < _objs.Length; i++)
+                _objs[i] = new BaseObject(new Point(600, i * 20), new Point(15 - i, 15 - i), new Size(20, 20));
+        }
+
+        /// <summary>
+        /// изменения состояния объектов
+        /// </summary>
+        public static void Update()
+        {
+            foreach (BaseObject obj in _objs)
+                obj.Update();
+        }
+
+
     }
 }
 
